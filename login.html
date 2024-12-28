@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログイン - e-port</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>ログイン</h1>
+    <form id="loginForm">
+        <label for="email">メールアドレス:</label>
+        <input type="email" id="email" required>
+        <br>
+        <label for="password">パスワード:</label>
+        <input type="password" id="password" required>
+        <br>
+        <button type="submit">ログイン</button>
+    </form>
+
+    <p>まだアカウントをお持ちでないですか？ <a href="signup.html">新規登録</a></p>
+
+    <script src="login.js"></script>
+</body>
+</html>
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js"></script>
+
+<script>
+  // Firebase設定（あなたのプロジェクトの設定をここに入力）
+  const firebaseConfig = {
+    apiKey: "your-api-key",
+    authDomain: "your-auth-domain",
+    projectId: "your-project-id",
+    storageBucket: "your-storage-bucket",
+    messagingSenderId: "your-sender-id",
+    appId: "your-app-id"
+  };
+
+  // Firebase初期化
+  const app = firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+</script>

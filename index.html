@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>メインページ - e-port</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>e-port メインページ</h1>
+    <p id="welcomeMessage">ログイン状態を確認しています...</p>
+    <button id="logoutButton">ログアウト</button>
+
+    <!-- Firebase設定を含むスクリプト -->
+    <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js"></script>
+
+    <script>
+      // Firebase設定（プロジェクトの設定を入力）
+      const firebaseConfig = {
+        apiKey: "your-api-key",
+        authDomain: "your-auth-domain",
+        projectId: "your-project-id",
+        storageBucket: "your-storage-bucket",
+        messagingSenderId: "your-sender-id",
+        appId: "your-app-id"
+      };
+
+      // Firebase初期化
+      const app = firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+
+      // ユーザーのログイン状態を監視
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          console.log("ログイン中:", user.email);
+          document.getElementById("welcomeMessage").textContent = `ようこそ、${user.email} さん！`;
+        } else {
+          alert("ログインしてください！");
+          window.location.href = "login.html";
+        }
+      });
+    </script>
+
+    <script>
+      // ログアウト機能
+      document.getElementById("logoutButton").addEventListener("click", () => {
+        firebase.auth().signOut().then(() => {
+          alert("ログアウトしました！");
+          window.location.href = "login.html";
+        }).catch((error) => {
+          console.error("ログアウトエラー:", error);
+        });
+      });
+    </script>
+</body>
+</html>
