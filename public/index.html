@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>スマートチャットアプリ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Authentication Page -->
+  <div id="page-auth">
+    <div id="login-form">
+      <h1>ログイン</h1>
+      <form id="form-login">
+        <label>
+          ユーザー名:
+          <input type="text" id="login-username" required>
+        </label>
+        <br>
+        <label>
+          パスワード:
+          <input type="password" id="login-password" required>
+        </label>
+        <br>
+        <button type="submit">ログイン</button>
+      </form>
+      <button id="to-registration">新規登録はこちら</button>
+    </div>
+    <div id="registration-form" style="display:none;">
+      <h1>新規ユーザー登録</h1>
+      <form id="form-register">
+        <label>
+          ユーザー名:
+          <input type="text" id="register-username" required>
+        </label>
+        <br>
+        <label>
+          パスワード:
+          <input type="password" id="register-password" required>
+        </label>
+        <br>
+        <button type="submit">登録</button>
+      </form>
+      <button id="to-login">ログインはこちら</button>
+    </div>
+  </div>
+
+  <!-- Home Page -->
+  <div id="page-home" style="display:none;">
+    <header>
+      <input type="text" id="display-username" value="" readonly>
+    </header>
+    <section>
+      <input type="text" id="user-search" placeholder="ユーザー検索">
+      <ul id="search-result"></ul>
+    </section>
+    <section>
+      <h2>友達リクエスト</h2>
+      <ul id="friend-requests"></ul>
+    </section>
+    <section>
+      <h2>連絡可能ユーザーリスト</h2>
+      <ul class="contact-list" id="contact-list"></ul>
+    </section>
+  </div>
+
+  <!-- Chat Page -->
+  <div id="page-chat" style="display:none;">
+    <button id="back-to-home">戻る</button>
+    <div class="chat-container">
+      <div class="message-history" id="message-history">
+      </div>
+      <div class="message-input">
+        <input type="text" id="chat-input" placeholder="メッセージを入力">
+        <button id="send-message">送信</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
